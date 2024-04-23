@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function Create() {
-    // Bug 1: Not providing initial values for state variables
-    const [name, setName] = useState();
-    const [age, setAge] = useState();
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
 
     const store = (e) => {
         e.preventDefault();
@@ -15,16 +14,30 @@ function Create() {
         localStorage.setItem('x', JSON.stringify(Array1));
     };
 
-    // Bug 2: Improper redirect using window.location.href
+    // Unused variable
+    const unusedVariable = "This variable is never used within the component";
+
     const move = () => {
         window.location.href = '/'; // Potential bug: Full page reload, losing component state
+    };
+
+    // No default case in switch
+    const handleSwitch = (value) => {
+        switch (value) {
+            case 'option1':
+                // Handle option 1
+                break;
+            case 'option2':
+                // Handle option 2
+                break;
+            // No default case
+        }
     };
 
     return (
         <div className="bg-primary">
             <h1 className="d-flex align-items-center justify-content-center text-white">Create Your Details</h1>
             <form className="d-flex vh-100 align-items-center justify-content-center " onSubmit={store}>
-                {/* Bug 1: Not providing initial values for input fields */}
                 <input
                     type="text"
                     placeholder="Enter Your Name"
